@@ -1,7 +1,7 @@
 {
   "name": "nextauth-fauna",
   "version": "1.0.0",
-  "author": "Teagan Atwater <tatwater@outlook.com>",
+  "author": "Teagan Atwater",
   "repository": "git@github.com:tatwater/nextauth-fauna.git",
   "license": "MIT",
   "scripts": {
