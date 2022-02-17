@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev"
   },
-  "packageManager": "yarn@3.1.1",
+  "packageManager": "yarn@1.22.17",
   "dependencies": {
     "@next-auth/fauna-adapter": "^1.0.1",
     "faunadb": "^4.4.1",
