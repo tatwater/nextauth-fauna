@@ -10,6 +10,12 @@ const client = new FaunaClient({
   domain: 'db.fauna.com',
   port: 443,
 });
+// const client = new FaunaClient({
+//   secret: process.env.FAUNA_CLIENT_SECRET,
+//   scheme: 'http',
+//   domain: 'localhost',
+//   port: 8443,
+// });
 
 export default NextAuth({
   providers: [
@@ -23,7 +29,7 @@ export default NextAuth({
         }
       },
       from: process.env.EMAIL_FROM,
-      maxAge: 10 * 60,
+      maxAge: 10 * 60 * 60,
     }),
   ],
 
@@ -38,6 +44,6 @@ export default NextAuth({
   },
 
   theme: 'auto',
-  
+
   debug: true,
 });

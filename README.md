@@ -61,8 +61,8 @@ event - compiled client and server successfully in 44 ms (213 modules)
   args: [
     {
       identifier: '<MY_EMAIL_HERE>',
-      token: '4a7e229d83eed3e0f2e29cc00381c72a6ec3909836653a44e4329d0ceb444e97',
-      expires: 2022-03-13T21:21:31.184Z
+      token: '946fe24ea717bf2678ad99abd29c1019a89737fc402c911dfeee8ff680ecaf3b',
+      expires: 2022-03-14T07:29:51.065Z
     }
   ]
 }
@@ -70,8 +70,22 @@ event - compiled client and server successfully in 44 ms (213 modules)
   args: [
     {
       identifier: '<MY_EMAIL_HERE>',
-      token: '4a7e229d83eed3e0f2e29cc00381c72a6ec3909836653a44e4329d0ceb444e97'
+      token: '946fe24ea717bf2678ad99abd29c1019a89737fc402c911dfeee8ff680ecaf3b'
     }
   ]
+}
+```
+
+The following is a new entry in `verification_tokens` in the Fauna Dashboard; the token matches and the expires time is 10 hours from now, as anticipated:
+
+```
+{
+  "ref": Ref(Collection("verification_tokens"), "326052758049260113"),
+  "ts": 1647206991155000,
+  "data": {
+    "identifier": "<MY_EMAIL_HERE>",
+    "token": "946fe24ea717bf2678ad99abd29c1019a89737fc402c911dfeee8ff680ecaf3b",
+    "expires": Time("2022-03-14T07:29:51.065Z")
+  }
 }
 ```
