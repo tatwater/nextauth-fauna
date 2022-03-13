@@ -5,9 +5,36 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 export default function HomePage() {
   const { data: session, status } = useSession();
   
-  return (
-    <nav>
-      { !session &&
+  if (status === 'loading') {
+    return (
+      <nav>Loading...</nav>
+    );
+  }
+
+  if (status === 'authenticated') {
+    return (
+      <nav>
+        <span>
+          <small>Signed in as</small>
+          <br />
+          <strong>{ session.user.email || session.user.name }</strong>
+        </span>
+        <Link
+          href={`/api/auth/signout`}
+          onClick={(e) => {
+            e.preventDefault()
+            signOut()
+          }}
+        >
+          <a>Sign out</a>
+        </Link>
+      </nav>
+    );
+  }
+
+  if (status === 'unauthenticated') {
+    return (
+      <nav>
         <Link
           href='/api/auth/signin'
           onClick={(event) => {
@@ -17,26 +44,7 @@ export default function HomePage() {
         >
           <a>Sign In</a>
         </Link>
-      }
-
-      { session?.user &&
-        <>
-          <span>
-            <small>Signed in as</small>
-            <br />
-            <strong>{ session.user.email || session.user.name }</strong>
-          </span>
-          <Link
-            href={`/api/auth/signout`}
-            onClick={(e) => {
-              e.preventDefault()
-              signOut()
-            }}
-          >
-            <a>Sign out</a>
-          </Link>
-        </>
-      }
-    </nav>
-  );
+      </nav>
+    );
+  }
 }

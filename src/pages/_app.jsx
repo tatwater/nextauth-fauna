@@ -5,7 +5,6 @@ import { SessionProvider } from 'next-auth/react';
 export default function NextAuthFauna({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider
-      // refetchInterval={ 5 * 60 }
       session={ session }
     >
       <Head>
