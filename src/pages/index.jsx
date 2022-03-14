@@ -17,16 +17,19 @@ export default function HomePage() {
         <span>
           <small>Signed in as</small>
           <br />
-          <strong>{ session.user.email || session.user.name }</strong>
+          <strong>{ session.user.name }</strong>
+          <br />
+          <strong>{ session.user.email }</strong>
         </span>
+        <br />
         <Link
-          href={`/api/auth/signout`}
-          onClick={(e) => {
-            e.preventDefault()
+          href='/api/auth/signout'
+          onClick={(event) => {
+            event.preventDefault()
             signOut()
           }}
         >
-          <a>Sign out</a>
+          <a>Sign Out</a>
         </Link>
       </nav>
     );

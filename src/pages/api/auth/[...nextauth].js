@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import EmailProvider from 'next-auth/providers/email'
+import GoogleProvider from 'next-auth/providers/google'
 import { Client as FaunaClient } from 'faunadb';
 import { FaunaAdapter } from '@next-auth/fauna-adapter';
 
@@ -19,11 +20,15 @@ export default NextAuth({
         port: process.env.EMAIL_SERVER_PORT,
         auth: {
           user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD
-        }
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
       },
       from: process.env.EMAIL_FROM,
       maxAge: 10 * 60 * 60,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   adapter: FaunaAdapter(client),
